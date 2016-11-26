@@ -1,0 +1,44 @@
+{% extends 'baseHome.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+	<div class="col s12 m8 l12 center">
+		<h1>Bienvenido/a a MyPaP</h1>
+	</div>
+
+	<video class="col s12 m12 l6" 
+	src="{% static 'video/mypap_ojo.mp4' %}" autoplay="autoplay" loop="loop"  width="450"></video>
+
+	<div class="col s12 m8 l5 form-low">
+		<form action="" method="get">
+			{% csrf_token %}
+			<div class="input-field">
+				<label for="user">Nombre de Usuario</label>
+				<input type="text" name="" id="user">
+			</div>
+
+			<div class="input-field">
+				<label for="email">Correo</label>
+				<input type="email" name="" id="email">
+			</div>
+		
+			<div class="input-field">
+				<label for="pw">Contraseña</label>
+				<input type="password" name="" id="pw">
+			</div>
+
+			<div class="input-field">
+				<label for="pw">Contraseña</label>
+				<input type="password" name="" id="pw">
+			</div>
+
+			<button class="btn">acceder</button>
+		</form>
+		<h4>
+			<a href="{% url 'index' %}">¿Ya tienes cuenta? accede yaaa!</a>
+		</h4>
+	</div>
+
+{% endblock %}

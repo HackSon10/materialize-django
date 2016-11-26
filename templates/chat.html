@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+	<div class="container">
+		<div class="row">
+			<h3 class="center col s12 m12 l9 offset-m2">hablando con {{request.user}}</h3>
+
+			<div class="col s12 m12 l10 offset-m3 cvn left">
+				<h2>hola</h2>
+				<h2>hola</h2>
+				<h2>hola</h2>
+				<h2>hola</h2>
+				<h2>hola</h2>
+				<h2>hola</h2>
+			</div>
+
+			<div class="col s12 m10 l12 offset-m3">
+				<form action="" method="post">
+					{% csrf_token %}
+
+					<div class="input-field col s12 m10 l8">
+						<label for="chat">Mensaje:</label>
+						<input type="text" name="msj" id="chat">
+					</div>
+					
+					<br>
+					
+					<div class="col s12 m2 l2">
+						<button class="btn waves-effect waves-light">enviar</button>
+					</div>
+						<!--<input type="button" class="btn waves-effect waves-light" value="enviar">-->
+				</form>
+			</div>
+
+
+		</div>
+	</div>
+
+{% endblock %}

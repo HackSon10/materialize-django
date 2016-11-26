@@ -1,0 +1,33 @@
+{% extends 'baseHome.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+	<div class="col s12 m8 l12 center offset-m2">
+		<h1>Bienvenido/a a MyPaP</h1>
+	</div>
+
+	<!--<img class="col s12 m12 l6" src="{% static 'img/imgMyPaP.png' %}"/>-->
+	<video class="col s12 m12 l6" 
+	src="{% static 'video/mypap_ojo.mp4' %}" autoplay="autoplay" loop="loop"  width="450"></video>
+
+	<div class="col s12 m10 l5 form-low">
+		{% csrf_token %}
+		<form action="">
+			<div class="input-field">
+				<label for="user">Nombre de Usuario</label>
+				<input type="text" name="" id="user">
+			</div>
+			<div class="input-field">
+				<label for="pw">Contraseña</label>
+				<input type="password" name="" id="pw">
+			</div>
+			<button class="btn" type="submit">acceder</button>
+		</form>
+		<h4>
+			<a href="{% url 'register' %}">¿No tienes, cuenta? registrate</a>
+		</h4>
+	</div>
+
+{% endblock %}

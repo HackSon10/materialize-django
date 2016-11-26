@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			{% block content %}
+			{% endblock %}
+
+		</div>
+	</div>
+
+	<script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+	<script src="{% static 'js/materialize.min.js' %}"></script>
+	<script src="{% static 'js/transition.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<div class="col s12 m10 l5 center">
+		<h4>{{request.user | title}}</h4>
+		<img src="{% static 'img/imgMyPaP.png' %}" width="400" class="vcall" alt="">
+		<button class="btn red waves-effect waves-light ">Llamar</button>
+	</div>
+
+	<div class="col s12 m10 l5 center">
+		<h4>Juan</h4>
+		<img src="{% static 'img/imgMyPaP.png' %}" width="580" class="vcall" alt="">
+	</div>
+
+{% endblock content %}
