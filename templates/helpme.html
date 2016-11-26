@@ -4,9 +4,11 @@
 
 {% block content %}
 
-  <h3 class="center">MyPaP es una red social, que te permite expresarte de cualquier forma</h3>
+  <h3 class="white-text center animated zoomIn top-login">
+    MyPaP es una red social, que te permite expresarte de cualquier forma.
+  </h3>
 
-  <h5>
+  <h5 class="animated zoomIn card-panel">
     En la parte de arriba tienes una barra
     y tienes muchas opciones como: Nuevo, 
     Videollamar, Chatear, Amigos, tu nombre
@@ -21,9 +23,10 @@
     </ol>
   </h5>
 
-  <h3>Si ya saber como funciona MyPaP, te invitamas a que ingreses por aqui
+  <h3 class="white-text center animated zoomIn">
+    Si ya saber como funciona MyPaP, te invitamas a que ingreses por aqui
     <a href="{% url 'index' %}">Iniciar Sesion</a> o 
-    <a href="{% url 'register' %}">registrarte</a> 
+    <a href="{% url 'register' %}">registrarte</a>. 
   </h3>
 
 {% endblock %}

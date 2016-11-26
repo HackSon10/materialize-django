@@ -8,6 +8,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
 </head>
 <body>
 
@@ -41,13 +42,11 @@
 
 				<div class="col s12 m8 l3 blue offset-m2 friends">
 
-				<ul class="collection">
+				<!--<ul class="collection">
 				<li class="collection-item avatar">
 				<img src="{% static 'img/html5.png' %}" alt="" class="circle">
 				<span class="title">Fulano</span>
-				<!--<p>First Line <br>
-					Second Line
-				</p>-->
+
 				<a href="{% url 'vcall' %}" class="right">
 					<i class="material-icons">videocam</i>
 				</a>
@@ -63,9 +62,7 @@
 				<li class="collection-item avatar">
 				<img src="{% static 'img/html5.png' %}" alt="" class="circle">
 				<span class="title">Juan</span>
-				<!--<p>First Line <br>
-					Second Line
-				</p>-->
+				
 				<a href="{% url 'vcall' %}" class="right">
 					<i class="material-icons">videocam</i>
 				</a>
@@ -99,12 +96,12 @@
 			I am convenient because I require little markup to use
 				effectively. I am similar to what is called a panel in other frameworks.
 			</span>
-			</div>
+			</div>-->
 		
 		</div>
 		
 		<div class="row">
-			<div class="col s12 m12 l9">
+			<div class="col s12">
 				{% block content %}{% endblock %}
 			</div>
 		</div>

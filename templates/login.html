@@ -4,23 +4,22 @@
 
 {% block content %}
 
-	<h3 class="center animated bounce">Estas en MyPaP</h3>
+	<h3 class="white-text center animated zoomIn">Estas en MyPaP</h3>
 
-	<div class="col s12 m12 l6 card-panel">
+	<div class="col s12 m12 l6 card-panel animated zoomIn top-login hoverable">
 		<h4 class="center animated bounceIn">Con MyPaP puedes:</h4>
 	
 		<h5>
-			<ol class="animated fadeInLeft">
+			<ol class="">
 				<li>Hacer Videollamadas</li>
 				<li>Conocer gente</li>
 				<li>Subir fotos</li>
 				<li>Chatear con tus amigos</li>
+				<li>y mas...</li>
 			</ol>
 		</h5>
 	
-		<h4 class="center">Ingresa y veras....</h4>
-
-		<h4 class="center"><a href="#login">Iniciar Sesion</a></h4>
+		<h4 class="center"><a href="#user">Inicia Sesion</a> y veras....</h4>
 
 		<h4 class="green-text center">Si quieres saber como funciona, da click en 
 			<a href="{% url 'help' %}">ayuda</a>
@@ -28,24 +27,26 @@
 	</div>
 
 
-	<div id="login" class="col s12 m12 l6 center card-panel hoverable top-login">
+	<div id="login" class="col s12 m12 l6 center card-panel animated zoomIn top-login hoverable">
 		<h4>Chatea, Videollama y disfruta con MyPaP</h4>
 		{% csrf_token %}
 		
-		<form action="">
-		
-			<div class="input-field">
+		<div class="col s12">
+
+		<form action="" method="GET">
+			<div class="input-field ">
 				<label for="user">Nombre de Usuario</label>
 				<input type="text" name="" id="user">
 			</div>
 
-			<div class="input-field">
+			<div class="input-field"> 
 				<label for="pw">Contraseña</label>
 				<input type="password" name="" id="pw">
 			</div>
 			
 			<button class="btn blue" type="submit">acceder</button>
 		</form>
+		</div>
 		
 		<h4>
 			<a href="{% url 'register' %}">Si no tienes cuenta registrate</a>
