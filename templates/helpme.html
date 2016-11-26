@@ -4,6 +4,26 @@
 
 {% block content %}
 
-  
+  <h3 class="center">MyPaP es una red social, que te permite expresarte de cualquier forma</h3>
+
+  <h5>
+    En la parte de arriba tienes una barra
+    y tienes muchas opciones como: Nuevo, 
+    Videollamar, Chatear, Amigos, tu nombre
+    de usuario y Salir.
+    <ol>
+      <li><Strong>Nuevo</Strong>: es para subir fotos, hacer comentarios, compartir tus experiancias.</li>
+      <li><Strong>Videollamar</Strong>: has videollamadas y habla con amigos, familia o conoce a más gente.</li>
+      <li><Strong>Chatear</Strong>: Escribele a quien tu quieras.</li>
+      <li><Strong>Amigos</Strong>: has solicitudes, mira cuantos seguidores tienes.</li>
+      <li><Strong>Tu nombre de usuario</Strong>: aqui puedes ver tu foto de perfil o configurar tu cuenta.</li>
+      <li><Strong>Salir</Strong>: salte de tu sesion</li>
+    </ol>
+  </h5>
+
+  <h3>Si ya saber como funciona MyPaP, te invitamas a que ingreses por aqui
+    <a href="{% url 'index' %}">Iniciar Sesion</a> o 
+    <a href="{% url 'register' %}">registrarte</a> 
+  </h3>
 
 {% endblock %}

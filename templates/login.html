@@ -4,13 +4,13 @@
 
 {% block content %}
 
-	<h1 class="center">Estas en MyPaP</h1>
+	<h3 class="center animated bounce">Estas en MyPaP</h3>
 
-	<div class="col s12 m12 l6 card-panel top-login">
-		<h4 class="center">Con MyPaP puedes:</h4>
+	<div class="col s12 m12 l6 card-panel">
+		<h4 class="center animated bounceIn">Con MyPaP puedes:</h4>
 	
 		<h5>
-			<ol>
+			<ol class="animated fadeInLeft">
 				<li>Hacer Videollamadas</li>
 				<li>Conocer gente</li>
 				<li>Subir fotos</li>
@@ -20,13 +20,15 @@
 	
 		<h4 class="center">Ingresa y veras....</h4>
 
-		<h4 class="green-text center">Si quieres saber como funciona, da click 
-			<a href="{% url 'help' %}">aqui</a>
+		<h4 class="center"><a href="#login">Iniciar Sesion</a></h4>
+
+		<h4 class="green-text center">Si quieres saber como funciona, da click en 
+			<a href="{% url 'help' %}">ayuda</a>
 		</h4>
 	</div>
 
 
-	<div class="col s12 m12 l6 center card-panel hoverable top-login">
+	<div id="login" class="col s12 m12 l6 center card-panel hoverable top-login">
 		<h4>Chatea, Videollama y disfruta con MyPaP</h4>
 		{% csrf_token %}
 		
@@ -46,7 +48,7 @@
 		</form>
 		
 		<h4>
-			<a href="{% url 'register' %}">¿No tienes, cuenta? registrate</a>
+			<a href="{% url 'register' %}">Si no tienes cuenta registrate</a>
 		</h4>
 
 	</div>
