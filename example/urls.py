@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^chat/$', views.chat, name="chat"),
     url(r'^user/$', views.prefile, name="profile"),
     url(r'^vcall/$', views.vcall, name="vcall"),
+    url(r'^help/$', views.helpme, name="help"),
     url(r'^register/$', views.register, name="register"),
 ]

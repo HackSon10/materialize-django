@@ -48,3 +48,5 @@ def register(request):
 def chat(request):
 	return render(request ,'chat.html')
 
+def helpme(request):
+	return render(request, 'helpme.html')

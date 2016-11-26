@@ -4,30 +4,54 @@
 
 {% block content %}
 
-	<div class="col s12 m8 l12 center offset-m2">
-		<h1>Bienvenido/a a MyPaP</h1>
+	<h1 class="center">Estas en MyPaP</h1>
+
+	<div class="col s12 m12 l6 card-panel top-login">
+		<h4 class="center">Con MyPaP puedes:</h4>
+	
+		<h5>
+			<ol>
+				<li>Hacer Videollamadas</li>
+				<li>Conocer gente</li>
+				<li>Subir fotos</li>
+				<li>Chatear con tus amigos</li>
+			</ol>
+		</h5>
+	
+		<h4 class="center">Ingresa y veras....</h4>
+
+		<h4 class="green-text center">Si quieres saber como funciona, da click 
+			<a href="{% url 'help' %}">aqui</a>
+		</h4>
 	</div>
 
-	<!--<img class="col s12 m12 l6" src="{% static 'img/imgMyPaP.png' %}"/>-->
-	<video class="col s12 m12 l6" 
-	src="{% static 'video/mypap_ojo.mp4' %}" autoplay="autoplay" loop="loop"  width="450"></video>
 
-	<div class="col s12 m10 l5 form-low">
+	<div class="col s12 m12 l6 center card-panel hoverable top-login">
+		<h4>Chatea, Videollama y disfruta con MyPaP</h4>
 		{% csrf_token %}
+		
 		<form action="">
+		
 			<div class="input-field">
 				<label for="user">Nombre de Usuario</label>
 				<input type="text" name="" id="user">
 			</div>
+
 			<div class="input-field">
 				<label for="pw">Contraseña</label>
 				<input type="password" name="" id="pw">
 			</div>
-			<button class="btn" type="submit">acceder</button>
+			
+			<button class="btn blue" type="submit">acceder</button>
 		</form>
+		
 		<h4>
 			<a href="{% url 'register' %}">¿No tienes, cuenta? registrate</a>
 		</h4>
+
 	</div>
 
+
+	<!--<video class="col s12 m12 l6 card-panel responsive-video"
+	src="{% static 'video/mypap_ojo.mp4' %}" autoplay="autoplay" loop="loop" width="450"></video>-->
 {% endblock %}
