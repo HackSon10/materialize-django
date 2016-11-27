@@ -30,12 +30,13 @@
 
 		</ul>
 		<ul class="side-nav navm" id="mobile-demo">
-			<li><a href="#">Nuevo</a></li>
-			<li><a href="#">Videollamar</a></li>
-			<li><a href="#">Chat</a></li>
-			<li><a href="#">Amigos</a></li>
-			<li><a href="#">{{request.user.username}}</a></li>
-			<li><a href="#">Salir</a></li>
+			<li><a class="btn blue" href="{% url 'help' %}">Ayuda</a></li>
+			<li><a class="btn blue" href="#">Nuevo</a></li>
+			<li><a class="btn blue" href="#">Videollamar</a></li>
+			<li><a class="btn blue" href="#">Chat</a></li>
+			<li><a class="btn blue" href="#">Amigos</a></li>
+			<li><a class="btn blue" href="#">{{request.user.username}}</a></li>
+			<li><a class="btn blue" href="#">Salir</a></li>
 		</ul>
 		</div>
 	</nav>

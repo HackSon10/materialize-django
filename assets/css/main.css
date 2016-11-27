@@ -6,10 +6,14 @@
 	/*transform: scale()*/
 }
 
+.input-field input[type=email]:focus {
+	border-bottom: 1px solid #2196F3;
+	box-shadow: 0 1px 0 0 #2196F3;
+}
+
 .barra{
 	padding: 0 20px;
 }
-
 .zoom{
 	-webkit-animation-name: scalar;
 	-moz-animation-name: scalar;
