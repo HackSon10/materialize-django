@@ -6,25 +6,25 @@
 
 				<div class="col s12 m12 l12">
 				<br>
-				<form action="" method="POST" enctype="multipart/form-data">
+				<form action="" method="POST" class="center card-panel" enctype="multipart/form-data">
 					{% csrf_token %}
-					<div class="input-field">
+					<div class="input-field col s12 m6 l6 animated bounce">
 						<label for="id_text">Nombre:</label>
 						<input type="text" name="nombre" id="id_text" value="{{request.user}}">
 					</div>
 					
-					<div class="input-field">
+					<div class="input-field col s12 m6 l6 animated bounce">
 						<label for="id_email">Correo:</label>
 						<input type="email" name="correo" id="id_email">
 					</div>
 					
-					<div class="input-field">
+					<div class="input-field col s12 m6 l6 animated bounce">
 						<label for="id_edad">Edad:</label>
 						<input type="number" name="edad" id="id_edad">
 					</div>
 					
-					<div class="file-field input-field">
-						<div class="btn">
+					<div class="file-field input-field col s12 m6 l6 animated bounce">
+						<div class="btn blue">
 						<span>File</span>
 						<input type="file" name="image" multiple>
 					</div>
@@ -34,28 +34,29 @@
 					</div>
 					</div>
 					<!--<input type="submit" class="btn waves-effect waves-light" value="guardar">-->
-					<button class="btn waves-effect waves-light" type="submit" name="action">Guardar</button>
+					<button class="btn waves-effect waves-light orange animated bounce" type="submit" name="action">Comentar</button>
 				</form>
 			</div>
 
 			{% for persona in personas %}
-			<div class="col s9 m6 l6">
-			<div class="card medium hoverable">
-				<div class="card-image">
-				<h4 class="center title">{{persona.nombre}}</h4>
-				<img class="materialboxed responsive-img" src="{{MEDIA_URL}}{{persona.image}}">
+			<div class="col s12 m6 l6">
+			<div class="card medium hoverable zoom">
+
+				<div class="card-image responsive-img">
+					<h4 class="center title">{{persona.nombre}}</h4>
+					<img class="materialboxed" src="{{MEDIA_URL}}{{persona.image}}">
 				</div>
 				<div class="card-content">
-				<p>{{persona.correo}}</p>
+					<p>{{persona.correo}}</p>
 				<!--<p>{{persona.nombre}}</p>-->
 				<!--<p>{{request.user}}</p>-->
 				</div>
 				<div class="card-action">
-				<a href="#"><i class="material-icons">grade</i></a>
-				<a href="#"><i class="material-icons">comment</i></a>
-				{% if request.user.username == persona.nombre %}
-				<a href="#"><i class="material-icons">delete</i></a>
-				{% endif %}
+					<a href="#"><i class="material-icons">grade</i></a>
+					<a href="#"><i class="material-icons">comment</i></a>
+					{% if request.user.username == persona.nombre %}
+					<a href="/noti/{{persona.id}}/"><i class="material-icons">delete</i></a>
+					{% endif %}
 				</div>
 			</div>
 			</div>
@@ -63,5 +64,11 @@
 
 			</div>
 		</div>
+
+{% endblock %}
+
+{% block js %}
+
+		<script src="{% static 'js/noti.js' %}"></script>
 
 {% endblock %}

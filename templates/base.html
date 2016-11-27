@@ -7,16 +7,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style-btn.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
 </head>
 <body>
 
-	<nav class="deep-purple">
-		<div class="nav-wrapper container">
+	<nav class="deep-purple barra">
+		<div class="nav-wrapper">
 		<a href="/" class="brand-logo">MyPaP</a>
-		<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+		<a href="#" data-activates="mobile-demo" class="button-collapse right">
+			<i class="material-icons">menu</i>
+		</a>
 		<ul class="right hide-on-med-and-down">
+			<li><a class="btn" href="{% url 'help' %}">Ayuda</a></li>
 			<li><a href="{% url 'noti' %}">Nuevo</a></li>
 			<li><a href="{% url 'vcall' %}">Videollamar</a></li>
 			<li><a href="#">Chat</a></li>
@@ -26,14 +30,12 @@
 
 		</ul>
 		<ul class="side-nav navm" id="mobile-demo">
-			
 			<li><a href="#">Nuevo</a></li>
 			<li><a href="#">Videollamar</a></li>
 			<li><a href="#">Chat</a></li>
 			<li><a href="#">Amigos</a></li>
 			<li><a href="#">{{request.user.username}}</a></li>
 			<li><a href="#">Salir</a></li>
-
 		</ul>
 		</div>
 	</nav>
@@ -108,8 +110,11 @@
 		
 	</div>
 
-	<script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+	<!--<script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>-->
+	<script src="{% static 'js/jquery-2.2.0.min.js' %}"></script>
 	<script src="{% static 'js/materialize.min.js' %}"></script>
 	<script src="{% static 'js/navbar.js' %}"></script>
+	<script src="{% static 'js/script-btn.js' %}"></script>
+	{% block js %}{% endblock %}
 </body>
 </html>

@@ -3,4 +3,30 @@
 }
 .top{
 	margin-top: 60px;
+	/*transform: scale()*/
+}
+
+.barra{
+	padding: 0 20px;
+}
+
+.zoom{
+	-webkit-animation-name: scalar;
+	-moz-animation-name: scalar;
+	-o-animation-name: scalar;
+	animation-name: scalar;
+
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+}
+
+@keyframes scalar{
+	0%{
+		transform: scale(0,0)
+	}
+	100%{
+		transform: scale(1,1)
+	}
 }

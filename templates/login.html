@@ -6,8 +6,8 @@
 
 	<h3 class="white-text center animated zoomIn">Estas en MyPaP</h3>
 
-	<div class="col s12 m12 l6 card-panel animated zoomIn top-login hoverable">
-		<h4 class="center animated bounceIn">Con MyPaP puedes:</h4>
+	<div class="white-text col s12 m12 l6 animated bounceInLeft">
+		<h3 class="center">Con MyPaP puedes:</h3>
 	
 		<h5>
 			<ol class="">
@@ -21,13 +21,12 @@
 	
 		<h4 class="center"><a href="#user">Inicia Sesion</a> y veras....</h4>
 
-		<h4 class="green-text center">Si quieres saber como funciona, da click en 
+		<h4 class=" center">Si quieres saber como funciona, da click en 
 			<a href="{% url 'help' %}">ayuda</a>
 		</h4>
 	</div>
 
-
-	<div id="login" class="col s12 m12 l6 center card-panel animated zoomIn top-login hoverable">
+	<div id="login" class="col s12 m12 l6 center card-panel animated bounceInRight hoverable">
 		<h4>Chatea, Videollama y disfruta con MyPaP</h4>
 		{% csrf_token %}
 		
@@ -46,11 +45,12 @@
 			
 			<button class="btn blue" type="submit">acceder</button>
 		</form>
-		</div>
 		
 		<h4>
-			<a href="{% url 'register' %}">Si no tienes cuenta registrate</a>
+			Si no tienes cuenta <a href="{% url 'register' %}">registrate</a>
 		</h4>
+		
+		</div>
 
 	</div>
 
