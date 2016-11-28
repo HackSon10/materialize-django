@@ -7,9 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/style-btn.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	{% block css %}
+	{% endblock %}
 </head>
 <body>
 
@@ -111,11 +112,10 @@
 		
 	</div>
 
-	<!--<script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>-->
-	<script src="{% static 'js/jquery-2.2.0.min.js' %}"></script>
+	<script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+	<!--<script src="{% static 'js/jquery-2.2.0.min.js' %}"></script>-->
 	<script src="{% static 'js/materialize.min.js' %}"></script>
 	<script src="{% static 'js/navbar.js' %}"></script>
-	<script src="{% static 'js/script-btn.js' %}"></script>
 	{% block js %}{% endblock %}
 </body>
 </html>

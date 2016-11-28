@@ -11,6 +11,7 @@ class FormPersona(forms.Form):
     edad = forms.IntegerField()
     image = forms.ImageField()
 
-
+class FormComment(forms.Form):
+    comment = forms.CharField(max_length=3000)
 
 

@@ -1,6 +1,9 @@
-from django.shortcuts import render
-from .models import Persona
-from .form import FormPersona
+from django.shortcuts import render, get_list_or_404
+from django.core import serializers
+from django.http import HttpResponse, JsonResponse
+
+from .models import Persona, Comment
+from .form import FormPersona, FormComment
 
 def index(request):
 	return render(request ,'login.html')
@@ -8,8 +11,26 @@ def index(request):
 def noti(request):
 	if request.method == 'POST':
 		form = FormPersona(request.POST, request.FILES)
-		if form.is_valid():
+		# formC = FormComment(request.POST)
 
+		# if formC.is_valid():
+		# 	comment = formC.cleaned_data['comment']
+		# 	userI = request.user.username
+		# 	userI = str(userI)
+		# 	print userI
+
+		# 	commentM = Comment(persona=request.user, text=comment, ref_persona=nombre)
+		# 	# commentM.ref_persona = str(request.user.username)
+ 		# 	# commentM.save()
+		# 	# if commentM.text != '':
+  
+		# 	print comment
+		# 	# return HttpResponse({comment:comment},content_type='json')
+			
+		# 	return JsonResponse({'comment':comment, 'user':userI})
+
+		if form.is_valid():
+  		
 			nombre = form.cleaned_data['nombre']
 			correo = form.cleaned_data['correo']
 			edad = form.cleaned_data['edad']
@@ -30,11 +51,50 @@ def noti(request):
 			# return render(request ,'base.html')
 
 	personas = Persona.objects.all().order_by('-id')
+	comments = Comment.objects.all().order_by('-id')
+	
+	print comments
+	print personas
+	
 	data = {
 		'personas':personas,
+		'comments':comments,
 	}
 
 	return render(request ,'noti.html', data)
+
+def comments(request, persona_id):
+	personaN = get_list_or_404(Persona, id=persona_id)
+	if request.method == 'POST':
+		formC = FormComment(request.POST)
+
+		if formC.is_valid():
+			comment = request.POST.get('comment')
+			userI = request.user.username
+			userI = str(userI)
+
+			# p = Comment.objects.get(id=persona_id)
+			nombre = None
+			for x	in personaN:
+				nombre = x.nombre
+				print x.nombre
+			
+			# print Persona.ref_persona.all()
+
+			# commentM = Comment(persona=request.user, text=comment, ref_persona=nombre)
+
+			# commentM.ref_persona = str(request.user.username)
+			# commentM.save()
+	
+			print commentM
+			print personaN
+			# print p
+			# return HttpResponse({comment:comment},content_type='json')
+			
+			return JsonResponse({'comment':comment, 'user':userI})
+		# return redirect('/noti/')
+  
+	return HttpResponse(personaN)
 
 def vcall(request):
 	return render(request ,'vcall.html')

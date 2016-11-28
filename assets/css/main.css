@@ -3,7 +3,6 @@
 }
 .top{
 	margin-top: 60px;
-	/*transform: scale()*/
 }
 
 .input-field input[type=email]:focus {
