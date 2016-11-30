@@ -41,7 +41,7 @@
 			</div>
 
 			{% for persona in personas %}
-			<div class="col s12 m6 l6">
+			<div class="col s12 m12 l6">
 			<div class="card medium hoverable zoom">
 
 				<div class="card-image responsive-img">
@@ -61,7 +61,8 @@
 					{% endif %}
 				</div>
 			</div>
-			<form action="/comment/{{persona.id}}/" method="POST" id="formComment">
+			
+			<form action="" method="POST" class="formComment" id="{{persona.id}}">
 				{% csrf_token %}
 				
 				<div class="input-field col s12 m7 l9 animated slideInDown">
@@ -74,19 +75,16 @@
 				</div>
 			</form>
 
-			{% if comments %}
-				<ul class="col s12 collection animated slideInDown {{persona.id}}">
+			<ul id="{{persona.id}}" class="col s12 collection animated slideInDown">
 				{% for comment in comments %}
 					{% if comment.ref_persona.nombre == persona.nombre %}
 						<li class="collection-item"><strong>{{comment.persona}}</strong> {{comment.text}}</li>
 					{% endif %}
 				{% endfor %}
-				</ul>
-			{% endif %}
+			</ul>
 
 			</div>
 			{% endfor %}
-
 
 			</div>
 		</div>

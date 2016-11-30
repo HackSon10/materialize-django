@@ -1,6 +1,9 @@
 var comment = $('#comment');
-var formComment = $('form#formComment');
+var formComment = $('form.formComment');
 var text = $('input#id_comment');
+
+var numberC = $(".collection").attr('id')
+alert(numberC);
 
 formComment.on('submit' ,function(e){
   e.preventDefault();
@@ -8,14 +11,14 @@ formComment.on('submit' ,function(e){
   var comment = text.val()
 
   $.ajax({
-		url: "/comment/100/",
+		url: "/comment/"+numberC+"/",
 		type: "POST",
 		data: {'comment':comment},
 	})
 
   .done(function(res){
     console.log(res)
-    $('.collection')
+    $('ul #'+numberC)
       .append('<li class="collection-item animated bounceInUp"> <strong>'+res.comment+'</strong> '+res.user+'</li>')
   })
   .fail(function(err){

@@ -74,20 +74,22 @@ def comments(request, persona_id):
 			userI = str(userI)
 
 			# p = Comment.objects.get(id=persona_id)
-			nombre = None
-			for x	in personaN:
-				nombre = x.nombre
-				print x.nombre
+			# nombre = None
+			# for x	in personaN:
+			# 	nombre = x.nombre
+			# 	print x.nombre
 			
 			# print Persona.ref_persona.all()
+			p = Persona.objects.get(id=persona_id)
+			print p 
 
-			# commentM = Comment(persona=request.user, text=comment, ref_persona=nombre)
+			commentM = Comment(persona=request.user, text=comment, ref_persona=p)
 
 			# commentM.ref_persona = str(request.user.username)
-			# commentM.save()
+			commentM.save()
 	
 			print commentM
-			print personaN
+			# print personaN
 			# print p
 			# return HttpResponse({comment:comment},content_type='json')
 			
