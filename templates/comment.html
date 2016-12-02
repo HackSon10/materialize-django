@@ -1,0 +1,22 @@
+{% comment %}
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+		
+	{% block css %}
+	{% endblock %}
+
+
+{% endblock %}
+{% endcomment %}
+  <div class="container">
+    <div class="row">
+      
+      <h1>{{personas}}</h1>
+
+      {% for comment in comments %}
+        <li>{{comment.persona}} - {{comment.text}}</li>
+      {% endfor %}
+
+    </div>
+  </div>

@@ -28,16 +28,16 @@
 			<li><a href="#">Amigos</a></li>
 			<li><a href="{% url 'profile' %}">{{request.user.username}}</a></li>
 			<li><a href="#">Salir</a></li>
-
 		</ul>
+
 		<ul class="side-nav navm" id="mobile-demo">
-			<li><a class="btn blue" href="{% url 'help' %}">Ayuda</a></li>
-			<li><a class="btn blue" href="#">Nuevo</a></li>
-			<li><a class="btn blue" href="#">Videollamar</a></li>
-			<li><a class="btn blue" href="#">Chat</a></li>
-			<li><a class="btn blue" href="#">Amigos</a></li>
+			<li><a class="btn" href="{% url 'help' %}">Ayuda</a></li>
+			<li><a class="btn green" href="#">Nuevo</a></li>
+			<li><a class="btn red" href="#">Videollamar</a></li>
+			<li><a class="btn orange" href="#">Chat</a></li>
+			<li><a class="btn cyan" href="#">Amigos</a></li>
 			<li><a class="btn blue" href="#">{{request.user.username}}</a></li>
-			<li><a class="btn blue" href="#">Salir</a></li>
+			<li><a class="btn light-blue darken-4" href="#">Salir</a></li>
 		</ul>
 		</div>
 	</nav>
@@ -104,11 +104,11 @@
 		
 		</div>
 		
-		<div class="row">
-			<div class="col s12">
+		<!--<div class="row">-->
+			<!--<div class="col s12">-->
 				{% block content %}{% endblock %}
-			</div>
-		</div>
+			<!--</div>-->
+		<!--</div>-->
 		
 	</div>
 

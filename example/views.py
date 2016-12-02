@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, redirect
 from django.core import serializers
 from django.http import HttpResponse, JsonResponse
 
@@ -65,6 +65,12 @@ def noti(request):
 
 def comments(request, persona_id):
 	personaN = get_list_or_404(Persona, id=persona_id)
+	personas = Persona.objects.get(id=persona_id)
+	print personas
+
+	comments = Comment.objects.filter(ref_persona=personas).order_by('-id')
+	print comments
+
 	if request.method == 'POST':
 		formC = FormComment(request.POST)
 
@@ -72,31 +78,24 @@ def comments(request, persona_id):
 			comment = request.POST.get('comment')
 			userI = request.user.username
 			userI = str(userI)
-
-			# p = Comment.objects.get(id=persona_id)
-			# nombre = None
-			# for x	in personaN:
-			# 	nombre = x.nombre
-			# 	print x.nombre
 			
 			# print Persona.ref_persona.all()
 			p = Persona.objects.get(id=persona_id)
 			print p 
 
 			commentM = Comment(persona=request.user, text=comment, ref_persona=p)
-
-			# commentM.ref_persona = str(request.user.username)
 			commentM.save()
 	
 			print commentM
-			# print personaN
-			# print p
-			# return HttpResponse({comment:comment},content_type='json')
-			
-			return JsonResponse({'comment':comment, 'user':userI})
-		# return redirect('/noti/')
+			# return JsonResponse({'comment':comment, 'user':userI})
+			return redirect('/noti/#%s' % (persona_id))
   
-	return HttpResponse(personaN)
+	data = {
+		'personas':personas, 
+		'comments':comments,
+		}
+
+	return render(request, 'comment.html', data)
 
 def vcall(request):
 	return render(request ,'vcall.html')

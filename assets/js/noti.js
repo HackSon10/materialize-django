@@ -3,8 +3,8 @@ var formComment = $('form.formComment');
 var text = $('input#id_comment');
 
 var numberC = $(".collection").attr('id')
-alert(numberC);
-
+// alert(numberC);
+/*
 formComment.on('submit' ,function(e){
   e.preventDefault();
 
@@ -18,15 +18,15 @@ formComment.on('submit' ,function(e){
 
   .done(function(res){
     console.log(res)
-    $('ul #'+numberC)
-      .append('<li class="collection-item animated bounceInUp"> <strong>'+res.comment+'</strong> '+res.user+'</li>')
+    $('#'+numberC)
+      .append('<li class="collection-item animated bounceInUp"> <strong>'+res.user+'</strong> '+res.comment+'</li>')
   })
   .fail(function(err){
     console.log(err)
   })
 
 })
-
+*/
 function reload(){
   setTimeout(function() {
 

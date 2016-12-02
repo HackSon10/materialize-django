@@ -2,9 +2,13 @@
 {% load staticfiles %}
 {% block content %}
 		
+	{% block css %}
+	<link rel="stylesheet" href="{% static 'css/noti.css' %}">
+	{% endblock %}
+
 		<div class="container">
 			<div class="row">
-				
+
 				<div class="col s12 m12 l12">
 				<br>
 				<form action="" method="POST" class="center card-panel hoverable" enctype="multipart/form-data">
@@ -62,7 +66,7 @@
 				</div>
 			</div>
 			
-			<form action="" method="POST" class="formComment" id="{{persona.id}}">
+			<form action="/comment/{{persona.id}}/" method="POST" class="formComment" id="form{{persona.id}}">
 				{% csrf_token %}
 				
 				<div class="input-field col s12 m7 l9 animated slideInDown">
@@ -77,7 +81,7 @@
 
 			<ul id="{{persona.id}}" class="col s12 collection animated slideInDown">
 				{% for comment in comments %}
-					{% if comment.ref_persona.nombre == persona.nombre %}
+					{% if comment.ref_persona.id == persona.id %}
 						<li class="collection-item"><strong>{{comment.persona}}</strong> {{comment.text}}</li>
 					{% endif %}
 				{% endfor %}
