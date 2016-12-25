@@ -53,9 +53,6 @@ def noti(request):
 	personas = Persona.objects.all().order_by('-id')
 	comments = Comment.objects.all().order_by('-id')
 	
-	print comments
-	print personas
-	
 	data = {
 		'personas':personas,
 		'comments':comments,
