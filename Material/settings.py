@@ -111,11 +111,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': 'dbMypap',
-		'PORT': 8050,
-		'HOST': 127.0.0.1,
-		'PASSWORD': '27442041s',
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	# 	'PORT': 8050,
+	# 	'HOST': 127.0.0.1,
+	# 	'PASSWORD': '27442041s',
 	}
 }
 #os.path.join(BASE_DIR, 'db.sqlite3'),
