@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 class Persona(models.Model):
 	nombre = models.CharField(max_length=300)
 	correo = models.EmailField()
@@ -29,3 +28,10 @@ class Comment(models.Model):
 		image = self.image
 
 		return '%s had commented %s %s in %s' % (person, text, image, ref_person)
+
+
+
+
+
+
+		
