@@ -2,12 +2,13 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 class Persona(models.Model):
 	nombre = models.CharField(max_length=300)
 	correo = models.EmailField()
 	edad = models.IntegerField()
-	image = models.ImageField(upload_to="photos/", null=True, blank=True)
+	image = CloudinaryField("photos")
 
 	def __unicode__(self):
   		return self.nombre

@@ -1,12 +1,21 @@
+import cloudinary
+
 from django.shortcuts import render, get_list_or_404, redirect
 from django.core import serializers
 from django.http import HttpResponse, JsonResponse
+from django.views.generic import ListView
 
 from .models import Persona, Comment
 from .form import FormPersona, FormComment
+from cloudinary.forms import cl_init_js_callbacks
 
-def index(request):
-	return render(request ,'login.html')
+class LoginList(ListView):
+		model = Persona
+		context_object_name = 'persona'
+		template_name='login.html'
+
+# def index(request):
+# 	return render(request ,'login.html')
 
 def noti(request):
 	if request.method == 'POST':
@@ -30,32 +39,22 @@ def noti(request):
 		# 	return JsonResponse({'comment':comment, 'user':userI})
 
 		if form.is_valid():
-  		
-			nombre = form.cleaned_data['nombre']
-			correo = form.cleaned_data['correo']
+			name = form.cleaned_data['nombre']
+			email = form.cleaned_data['correo']
 			edad = form.cleaned_data['edad']
 			img = form.cleaned_data['image']
+			noti = Persona(nombre=name, correo=email, edad=edad, image=img or None)
 
-			print nombre
-			print img
-
-			# name = request.POST['nombre']
-			# email = request.POST['correo']
-			# edad = request.POST['edad']
-			# img = request.FILES['image']
-
-
-			p = Persona(nombre=nombre, correo=correo, edad=edad, image=img or None)
-			p.save()
-			# Persona.objects.filter(nombre=request.user).update(image=img)
-			# return render(request ,'base.html')
+			noti.save()
 
 	personas = Persona.objects.all().order_by('-id')
 	comments = Comment.objects.all().order_by('-id')
-	
+	form = FormPersona()
+
 	data = {
 		'personas':personas,
 		'comments':comments,
+		'form': form,
 	}
 
 	return render(request ,'noti.html', data)

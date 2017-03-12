@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
+
 {% load staticfiles %}
+{% load cloudinary %}
+
+{% comment %}
+<!--{% load url from future %}-->
+{% endcomment %}
+
 {% block content %}
 		
 	{% block css %}
@@ -9,83 +16,138 @@
 		<div class="container">
 			<div class="row">
 
-				<div class="col s12 m12 l12">
-				<br>
-				<form action="" method="POST" class="center card-panel hoverable" enctype="multipart/form-data">
+				<div class="col s12 m8 l6 offset-l3 offset-m2 card-panel">
+					<form action="" method="POST" class="center " enctype="multipart/form-data">
+						{% csrf_token %}
 
-					{% csrf_token %}
-					<div class="input-field col s12 m6 l6 animated bounce">
-						<label for="id_text">Nombre:</label>
-						<input type="text" name="nombre" id="id_text" value="{{request.user}}">
-					</div>
-					
-					<div class="input-field col s12 m6 l6 animated bounce">
-						<label for="id_email">Correo:</label>
-						<input type="email" name="correo" id="id_email">
-					</div>
-					
-					<div class="input-field col s12 m6 l6 animated bounce">
-						<label for="id_edad">Edad:</label>
-						<input type="number" name="edad" id="id_edad">
-					</div>
-					
-					<div class="file-field input-field col s12 m6 l6 animated bounce">
-						<div class="btn blue">
-						<span>File</span>
-						<input type="file" name="image" multiple>
-					</div>
-					<div class="file-path-wrapper">
-						<input class="file-path validate" name="image" type="text" 
-						placeholder="Upload one or more files">
-					</div>
-					</div>
-					<!--<input type="submit" class="btn waves-effect waves-light" value="guardar">-->
-					<button class="btn waves-effect waves-light orange animated bounce" type="submit" name="action">Comentar</button>
-				</form>
+						{% for field in form %}
+							<p class="red-text">{{field.errors}}</p>
+							{% if field.html_name == "nombre" %}
+							<div class="input-field col s12">
+								<label for="{{field.id_for_label}}">{{field.label}}</label>
+								{{field}}	
+							</div>
+							{% elif field.html_name == "image" %}
+							<div class="file-field input-field col s12">
+								<div class="btn blue">
+									<span>File</span>
+									<input type="file" name="image">
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" name="image" type="text" placeholder="Sube una">
+								</div>
+							</div>
+							{% else %}
+							<div class="input-field col s6">
+								<label for="{{field.id_for_label}}">{{field.label}}</label>
+								{{field}}
+							</div>
+							{% endif %}
+						{% endfor %}
+
+						{% comment %}
+						{{ form.nombre.errors }}
+						{% endcomment %}
+
+
+						<!--<p class="red-text">error</p>-->
+
+						<!--<div class="input-field col s12 l6">
+							<label for="id_text">Nombre:</label>
+							<input type="text" name="nombre" id="id_text" value="{{request.user}}">
+						</div>
+						
+						<div class="input-field col s12 l6">
+							<label for="id_email">Correo:</label>
+							<input type="text" name="correo" id="id_email">
+						</div>
+						
+						<div class="input-field col s12">
+							<label for="id_edad">Edad:</label>
+							<input type="number" name="edad" id="id_edad">
+						</div>
+						
+						<div class="file-field input-field col s12">
+							<div class="btn blue">
+								<span>File</span>
+								<input type="file" name="image">
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" name="image" type="text" placeholder="Sube una">
+							</div>
+						</div>-->
+						
+						<!--<input type="submit" class="btn waves-effect waves-light" value="guardar">-->
+						<button class="col s8 offset-s2 btn waves-effect waves-light orange" type="submit" name="action">
+							Comentar
+						</button>
+						<div class="col s12">
+							<h5> </h5>
+						</div>
+					</form>
 			</div>
 
 			{% for persona in personas %}
-			<div class="col s12 m12 l6">
-			<div class="card medium hoverable zoom">
+			<div class="col s12 m6 offset-m2 l6 offset-l3">
+				<div class="card hoverable zoom">
 
-				<div class="card-image responsive-img">
-					<h4 class="center title">{{persona.nombre | title}}</h4>
-					<img class="materialboxed" src="{{MEDIA_URL}}{{persona.image}}">
+					<div class="card-content">
+						<div class="author">
+							<!--<img src="{% static 'img/vaqueros.jpg' %}" class="" width="80">-->
+						<div class="border" 
+						style="background: url({% static 'img/vaqueros.jpg' %}); background-position: center; 
+						background-size:cover">
+							{% comment %}
+							<img src="{% static 'img/vaqueros.jpg' %}" class="responsive-img">
+							{% endcomment %}
+						</div>
+							<h4 class="center title">{{persona.nombre | title}}</h4>
+						</div>
+						<p>{{persona.correo}}</p>
+					<p>{{persona.nombre}}</p>
+					<p>{{request.user}}</p>
+					</div>
+					<div class="card-image responsive-img">
+						
+						{% comment %}
+							{% cloudinary persona.image format="jpg" alt='Image' %}
+						<img class="materialboxed" src="{{MEDIA_URL}}{{persona.image}}">
+						{% if cloudinary %}
+						{% else %}
+						{% endif %}
+						{% endcomment %}
+					</div>
+					<div class="card-action center">
+						<a href="#" class="btn-flat"><i class="material-icons">grade</i></a>
+						<a href="#" class="btn-flat" id="comment"><i class="material-icons">comment</i></a>
+						{% if request.user.username == persona.nombre %}
+						<a href="/noti/{{persona.id}}/" class="btn-flat"><i class="material-icons">delete</i></a>
+						{% endif %}
+					</div>
 				</div>
-				<div class="card-content">
-					<p>{{persona.correo}}</p>
-				<!--<p>{{persona.nombre}}</p>-->
-				<!--<p>{{request.user}}</p>-->
-				</div>
-				<div class="card-action">
-					<a href="#"><i class="material-icons">grade</i></a>
-					<a href="#" id="comment"><i class="material-icons">comment</i></a>
-					{% if request.user.username == persona.nombre %}
-					<a href="/noti/{{persona.id}}/"><i class="material-icons">delete</i></a>
-					{% endif %}
-				</div>
-			</div>
 			
-			<form action="/comment/{{persona.id}}/" method="POST" class="formComment" id="form{{persona.id}}">
-				{% csrf_token %}
-				
-				<div class="input-field col s12 m7 l9 animated slideInDown">
-					<label for="id_comment">comentario</label>
-					<input type="text" name="comment" id="id_comment">
-				</div>
-				
-				<div class="input-field col s10 m5 l6 animated slideInDown" >
-					<button class="btn col" type="submit" id="btn-form">comentar</button>
-				</div>
-			</form>
+				<form action="/comment/{{persona.id}}/" method="POST" class="formComment" id="form{{persona.id}}">
+					{% csrf_token %}
+					
+					<ul class="collection">
+						<div class="input-field col s8 m7 l8 animated slideInDown">
+							<label for="id_comment">comentario</label>
+							<input type="text" name="comment" id="id_comment">
+						</div>
+						<!--<br>-->
+						<div class="input-field col s2 m5 l2 animated slideInDown" >
+							<button class="btn col" type="submit" id="btn-form">comentar</button>
+						</div>
+					</ul>
+				</form>
 
-			<ul id="{{persona.id}}" class="col s12 collection animated slideInDown">
-				{% for comment in comments %}
-					{% if comment.ref_persona.id == persona.id %}
-						<li class="collection-item"><strong>{{comment.persona}}</strong> {{comment.text}}</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
+				<ul id="{{persona.id}}" class="col s12 collection animated slideInDown">
+					{% for comment in comments %}
+						{% if comment.ref_persona.id == persona.id %}
+							<li class="collection-item"><strong>{{comment.persona}}</strong> {{comment.text}}</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
 
 			</div>
 			{% endfor %}

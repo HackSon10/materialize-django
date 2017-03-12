@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
 	{% block css %}
 	{% endblock %}
 </head>
@@ -26,7 +27,8 @@
 			<li><a href="{% url 'vcall' %}">Videollamar</a></li>
 			<li><a href="#">Chat</a></li>
 			<li><a href="#">Amigos</a></li>
-			<li><a href="{% url 'profile' %}">{{request.user.username}}</a></li>
+			<li><a class="dropdown-button" data-beloworigin="true" data-activates="dropdown2" href="{% url 'profile' %} ">
+				{{request.user.username}}</a></li>
 			<li><a href="#">Salir</a></li>
 		</ul>
 
@@ -39,12 +41,19 @@
 			<li><a class="btn blue" href="#">{{request.user.username}}</a></li>
 			<li><a class="btn light-blue darken-4" href="#">Salir</a></li>
 		</ul>
-		</div>
+
+		<ul id='dropdown2' class='dropdown-content'>
+			<li><a href="#!">one</a></li>
+			<li class="divider"></li>
+			<li><a href="#!">two</a></li>
+			<li class="divider"></li>
+			<li><a href="#!">three</a></li>
+		</ul>
 	</nav>
 
 		<div class="row">
 
-				<div class="col s12 m8 l3 blue offset-m2 friends">
+				<!--<div class="col s12 m8 l3 blue offset-m2 friends">-->
 
 				<!--<ul class="collection">
 				<li class="collection-item avatar">
@@ -102,7 +111,7 @@
 			</span>
 			</div>-->
 		
-		</div>
+		<!--</div>-->
 		
 		<!--<div class="row">-->
 			<!--<div class="col s12">-->

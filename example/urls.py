@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name="index"),
+    url(r'^$', views.LoginList.as_view(), name="index"),
     url(r'^comment/(?P<persona_id>[\w]+)/', views.comments),
     url(r'^noti/$', views.noti, name="noti"),
     url(r'^chat/$', views.chat, name="chat"),

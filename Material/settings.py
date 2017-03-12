@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,6 +43,9 @@ INSTALLED_APPS = [
 	'example',
   'corsheaders',
 	'rest_framework',
+	'sslserver',
+	'cloudinary',
+	'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +58,14 @@ MIDDLEWARE = [
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+cloudinary.config( 
+  cloud_name = "producto", 
+  api_key = "594834466487912", 
+  api_secret = "NRYPIz0QOBeCNKZRgXFNSokrgj8" 
+)
+
+# CLOUDINARY_URL = cloudinary://594834466487912:NRYPIz0QOBeCNKZRgXFNSokrgj8@producto
 
 ROOT_URLCONF = 'Material.urls'
 
@@ -80,7 +94,7 @@ CORS_ALLOW_METHODS = (
     'PATCH',
     'POST',
     'PUT',
-    "DELETE",
+    'DELETE',
 )
 
 CORS_ALLOW_HEADERS = (
@@ -98,7 +112,8 @@ CORS_ALLOW_HEADERS = (
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+		'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }
 
 WSGI_APPLICATION = 'Material.wsgi.application'

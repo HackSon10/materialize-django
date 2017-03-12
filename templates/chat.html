@@ -6,30 +6,28 @@
 
 	<div class="container">
 		<div class="row">
-			<h3 class="center col s12 m12 l9 offset-m2">hablando con {{request.user}}</h3>
+			<h3 class="center">hablando con {{request.user}}</h3>
 
-			<div class="col s12 m12 l10 offset-m3 cvn left">
-				<h2>hola</h2>
-				<h2>hola</h2>
-				<h2>hola</h2>
-				<h2>hola</h2>
-				<h2>hola</h2>
-				<h2>hola</h2>
+			<div class="col s10 l6 offset-s1 offset-l3">
+				<ul class="collection">
+					<li class="collection-item">hola</li>
+					<li class="collection-item">hola</li>
+					<li class="collection-item">hola</li>
+					<li class="collection-item">hola</li>
+					<li class="collection-item">hola</li>
+					<li class="collection-item">hola</li>
+				</ul>
 			</div>
 
-			<div class="col s12 m10 l12 offset-m3">
+			<div class="col s10 m8 l8 offset-s1 offset-m2 offset-l3">
 				<form action="" method="post">
 					{% csrf_token %}
-
-					<div class="input-field col s12 m10 l8">
-						<label for="chat">Mensaje:</label>
-						<input type="text" name="msj" id="chat">
-					</div>
-					
-					<br>
-					
-					<div class="col s12 m2 l2">
-						<button class="btn waves-effect waves-light">enviar</button>
+					<div class="row">
+						<div class="input-field col s8 l6">
+							<label for="chat">Mensaje:</label>
+							<input type="text" name="msj" id="chat">
+						</div>
+						<button class="col s4 l2 btn waves-effect waves-light">enviar</button>
 					</div>
 						<!--<input type="button" class="btn waves-effect waves-light" value="enviar">-->
 				</form>
